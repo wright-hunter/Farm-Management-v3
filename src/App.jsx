@@ -1,27 +1,22 @@
+import { Route, Routes } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import Dashboard from './features/dashboard/Dashboard';
+import Fields from './features/fields/Fields';
+import Equipment from './features/equipment/Equipment';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+    <div className="main-layout">
+      <Sidebar />
+      <div className="content">
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/fields/" element={<Fields />} />
+        <Route path="/equipment/" element={<Equipment />} />
+      </Routes>
+      </div>
     </div>
   );
 }
