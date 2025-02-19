@@ -1,5 +1,5 @@
 import './sidebar.css';
-import { House, Wheat, FileText, Settings, HelpCircle } from 'lucide-react';
+import { House, Wheat, Tractor, Settings, HelpCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
@@ -11,31 +11,31 @@ const Sidebar = () => {
       <nav>
         <ul>
           <li>
-            <Link href="/">
+            <Link to="/">
               <House size={20} />
               <span>Dashboard</span>
             </Link>
           </li>
           <li>
-            <Link href="/users">
+            <Link to="/fields/">
               <Wheat size={20} />
               <span>Fields</span>
             </Link>
           </li>
           <li>
-            <Link href="/documents">
-              <FileText size={20} />
-              <span>Documents</span>
+            <Link to="/equipment/">
+              <Tractor size={20} />
+              <span>Equipment</span>
             </Link>
           </li>
           <li>
-            <Link href="/settings">
+            <Link to="/settings">
               <Settings size={20} />
               <span>Settings</span>
             </Link>
           </li>
           <li>
-            <Link href="/help">
+            <Link to="/help">
               <HelpCircle size={20} />
               <span>Help</span>
             </Link>
