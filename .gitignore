@@ -1,3 +1,7 @@
+#backend
+venv/
+#frontend
+
 # Logs
 logs
 *.log
