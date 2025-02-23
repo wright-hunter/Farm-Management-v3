@@ -1,4 +1,4 @@
-import React from "react";
+import styles from "./equipment.module.css";
 
 const Equipment = () => {
   return (

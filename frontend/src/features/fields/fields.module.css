@@ -1,0 +1,33 @@
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 300px minmax(300px, 1fr);
+    gap: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.layout > * {
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.plot-1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    background-color: aqua;
+}
+
+.plot-2 {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    background-color: black;
+}
+
+.table {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    background-color: red;
+    padding: 10px;
+}
