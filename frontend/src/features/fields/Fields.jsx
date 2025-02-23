@@ -6,7 +6,7 @@ const Fields = () => {
     <div className = {styles.layout}>
       <div className = {styles["plot-1"]}></div>
       <div className = {styles["plot-2"]}></div>
-      <Table className = {styles.table}/>
+      <div className = {styles.table}><Table /></div>
     </div>
   );
 };

@@ -1,0 +1,17 @@
+/* Table.module.css */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 0px;
+    text-align: center;
+    border: 1px solid #000000;
+}
+
+/* Define row height */
+.table tbody tr {
+    height: 10px;
+}
