@@ -1,5 +1,8 @@
 #backend
 venv/
+
+instance/
+*.pyc
 #frontend
 
 # Logs

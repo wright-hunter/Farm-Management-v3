@@ -1,28 +1,33 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+from models import db, User
 
-app = Flask(__name__)
+app = Flask(__name__) #tells flask the name of the app is the name of the file "app.py"
 
-# Allow CORS
+# Allow CORS for local testing
 CORS(app)
 
-# Sample data
-data = [
-    {"id": 1, "name": "Item 1"},
-    {"id": 2, "name": "Item 2"},
-]
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test_database.db' #create database file
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #disable modification tracking
+
+db.init_app(app) #initialize the database
+
+# Create the database and tables
+with app.app_context():
+    db.create_all()
 
 # Route to get all items
-@app.route('/api/items', methods=['GET'])
+@app.route('/api/users', methods=['GET'])
 def get_items():
-    return jsonify(data)
+    users = User.query.all()
+    return {'users': [user.username for user in users]}
 
 # Route to get a single item by ID
-@app.route('/api/items/<int:item_id>', methods=['GET'])
+@app.route('/api/users/<int:item_id>', methods=['GET'])
 def get_item(item_id):
-    item = next((item for item in data if item['id'] == item_id), None)
-    if item:
-        return jsonify(item)
+    user = User.query.get(item_id)
+    if user:
+        return jsonify(user)
     else:
         return jsonify({"error": "Item not found"}), 404
 
