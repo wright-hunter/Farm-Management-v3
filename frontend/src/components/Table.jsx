@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from './table.module.css';
 
-const Table = ({ className }) => {
+const Table = ({ api }) => {
     // State to store the fetched data
     const [data, setData] = useState([]);
 
     // Fetch data from the Flask API
     useEffect(() => {
-        axios.get('http://127.0.0.1:5000/api/items') // Replace with your Flask server URL
+        axios.get(api) // Replace with your Flask server URL
             .then(response => {
-                setData(response.data); // Set the fetched data to state
+                const dataArray = Array.isArray(response.data) ? response.data : [response.data];
+                setData(dataArray); // Set the fetched data to state
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
