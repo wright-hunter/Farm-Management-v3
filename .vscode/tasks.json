@@ -1,0 +1,29 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Open Development Environment",
+        "dependsOn": ["Backend Terminal", "Frontend Terminal"],
+        "runOptions": {
+          "runOn": "folderOpen"
+        }
+      },
+      {
+        "label": "Backend Terminal",
+        "type": "shell",
+        "command": "cd backend && python app.py run",
+        "presentation": {
+          "panel": "new",
+          "focus": true
+        }
+      },
+      {
+        "label": "Frontend Terminal",
+        "type": "shell",
+        "command": "cd frontend && npm start",
+        "presentation": {
+          "panel": "new"
+        }
+      }
+    ]
+  }
