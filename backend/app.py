@@ -9,12 +9,13 @@ load_dotenv() # Load environment variables from .env file
 
 app = Flask(__name__) #tells flask the name of the app is the name of the file "app.py"
 
-# Allow CORS for local testing
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f'{os.getenv("DATABASE_URL")}' #create database file
+# access database
+app.config['SQLALCHEMY_DATABASE_URI'] = f'{os.getenv("DATABASE_URL")}'
 
-db.init_app(app) #initialize the database
+#initialize the database
+db.init_app(app) 
 
 # Create the database and tables
 with app.app_context():
@@ -24,22 +25,31 @@ migrate = Migrate(app, db)
 
 # Route to get all items
 @app.route('/api/fields', methods=['GET'])
-def get_items():
+def get_fields():
     # Simple test data for fields
     fields = Field.query.all()
     fields = [field.to_dict() for field in fields]
     return jsonify(fields)
 
 @app.route('/api/fields', methods=['POST'])
-def create_item():
+def create_field():
     data = request.get_json()
     new_field = Field(name=data['name'], location=data['location'])
     db.session.add(new_field)
     db.session.commit()
     return jsonify({"message": "Field created successfully"}), 201
 
+@app.route('/api/fields/<int:id>', methods=['PUT'])
+def update_field(id):
+    data = request.get_json()
+    field = Field.query.get_or_404(id)
+    field.name = data['name']
+    field.location = data['location']
+    db.session.commit()
+    return jsonify({"message": "Field updated successfully"}), 200
+
 @app.route('/api/fields/<int:id>', methods=['DELETE'])
-def delete_item(id):
+def delete_field(id):
     field = Field.query.get_or_404(id)
     db.session.delete(field)
     db.session.commit()
@@ -87,6 +97,21 @@ def create_field_entry(field_id):
     db.session.add(new_entry)
     db.session.commit()
     return jsonify({"message": "Field entry created successfully"}), 201
+
+@app.route('/api/fields/<int:field_id>/<int:entry_id>', methods=['PUT'])
+def update_field_entry(field_id, entry_id):
+    data = request.get_json()
+    entry = FieldEntry.query.get_or_404(entry_id)
+    entry.year = data['year']
+    entry.acres_harvested = data['acres_harvested']
+    entry.crop_type = data['crop_type']
+    entry.seed_cost = data['seed_cost']
+    entry.fertilizer_cost = data['fertilizer_cost']
+    entry.chemical_cost = data['chemical_cost']
+    entry.crop_insurance = data['crop_insurance']
+    entry.bushels_harvested = data['bushels_harvested']
+    db.session.commit()
+    return jsonify({"message": "Field entry updated successfully"}), 200
 
 @app.route ('/api/fields/<int:field_id>/<int:entry_id>', methods=['DELETE'])
 def delete_field_entry(field_id, entry_id):
