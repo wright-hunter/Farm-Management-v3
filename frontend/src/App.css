@@ -7,4 +7,6 @@
 .content {
   flex: 1;
   padding: 24px;
+  background-color: var(--secondary-color);
+  margin-left: 182px; /* Adjust this value to match the width of your sidebar */
 }

@@ -28,18 +28,6 @@ const Sidebar = () => {
               <span>Equipment</span>
             </Link>
           </li>
-          <li>
-            <Link to="/settings">
-              <Settings size={20} />
-              <span>Settings</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/help">
-              <HelpCircle size={20} />
-              <span>Help</span>
-            </Link>
-          </li>
         </ul>
       </nav>
     </div>   
