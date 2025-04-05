@@ -1,0 +1,56 @@
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.entry {
+    border-radius: 6px;
+    background-color: var(--primary-color);
+    padding: 5px 10px;
+}
+
+.entry label {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+.entry input {
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px 0;
+    font-size: 16px;
+    color: black;
+    border: 0px;
+    width: 96%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.entry select {
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px 0;
+    font-size: 16px;
+    color: black;
+    border: 0px;
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button {
+    border-radius: 10px;
+    background-color: white;
+    width: 100px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 550;
+    padding: 5px 10px;
+    display: block;
+    margin: auto;
+}

@@ -1,10 +1,9 @@
 .layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: 300px minmax(300px, 1fr);
     gap: 20px;
     overflow: hidden;
-    min-height: 100%;
 }
 
 .layout > * {
@@ -12,8 +11,21 @@
     border-radius: 10px;
 }
 
+.layout h1 {
+    background-color: var(--tertiary-color);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 30px;
+    color: black;
+    border: 3px solid var(--primary-color);
+}
+
 .plot {
     background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
 
 .tableSmall {
@@ -22,7 +34,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 300px;
+    max-width: 600px;
 }
 
 .tableLarge {

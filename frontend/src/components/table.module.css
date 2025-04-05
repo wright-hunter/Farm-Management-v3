@@ -1,17 +1,76 @@
 /* Table.module.css */
-.table {
+.layout {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    background-color: var(--tertiary-color);
+    border-radius: 10px;
+    padding-bottom: 10px;
+}
+
+.taskbar {
+    display: flex;
+
+}
+.button {
+    padding: 10px;
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    color: var(--secondary-color);
+}
+
+.buttonClickableRow {
+    padding: 10px;
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+}
+
+.buttonClickableRow:hover {
+    color: white;
+}
+
+.table {
+    table-layout: fixed;
+    width: 98%;
+    margin: 0 auto;
     border-collapse: collapse;
 }
 
 .table th,
 .table td {
-    padding: 0px;
+    padding: 3px;
     text-align: center;
-    border: 1px solid #949494;
 }
 
+.table thead {
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    color: white;
+}
 /* Define row height */
 .table tbody tr {
-    height: 10px;
+    height: 40px;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.contentColumn {
+    width: auto;
+}
+
+.clickable {
+    cursor: pointer;
+}
+.clickable:hover {
+    background-color: var(--secondary-color);
 }

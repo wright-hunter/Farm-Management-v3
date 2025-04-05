@@ -8,7 +8,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000; /* Ensure modal stays on top of other content */
+    overflow-y: auto; /* Allow scrolling of the entire modal container */
+    padding: 20px; /* Add padding to prevent content from touching edges */
 }
+
 .modalContent {
     background-color: var(--tertiary-color);
     border-radius: 10px;
@@ -16,8 +20,10 @@
     width: 80%;
     max-width: 300px;
     min-width: 270px;
-    min-height: 200px;
+    max-height: 80vh; /* Limit height to 80% of viewport */
+    overflow-y: auto; /* Allow scrolling within the modal content */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: auto; /* Center vertically when content is smaller than viewport */
 }
 
 .closeButton {

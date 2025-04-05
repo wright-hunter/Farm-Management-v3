@@ -1,11 +1,11 @@
-import './sidebar.css';
+import styles from './sidebar.module.css';
 import { House, Wheat, Tractor, Settings, HelpCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <div className="sidebar">
-      <div className="logo">
+    <div className={styles.sidebar}>
+      <div className={styles.logo}>
         <h1>My App</h1>
       </div>
       <nav>
