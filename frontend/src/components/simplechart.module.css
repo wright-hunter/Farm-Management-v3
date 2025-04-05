@@ -1,0 +1,78 @@
+/* Chart Container Styles */
+.chartContainer {
+    width: 95%;
+    height: 90%;
+    background-color: var(--tertiary-color);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .chartWrapper {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+  }
+  
+  /* Error State */
+  .chartError {
+    color: #e74c3c;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #f8d7da;
+    background-color: #fff5f5;
+    border-radius: 5px;
+  }
+  
+  /* Chart Title */
+  .chartTitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  /* Legend Customization */
+  .customLegend {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 5px;
+  }
+  
+  .legendItem {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    font-size: 14px;
+  }
+  
+  .legendColor {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    margin-right: 5px;
+  }
+  
+  /* Tooltip Customization */
+  .customTooltip {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  }
+  
+  .tooltipLabel {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .tooltipValue {
+    color: #2980b9;
+    font-weight: 500;
+  }
