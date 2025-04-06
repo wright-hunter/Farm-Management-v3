@@ -15,11 +15,11 @@ const fieldColumns = [
     accessorKey: 'year'
   },
   {
-    header: 'Acres Harvested',
+    header: 'Acres',
     accessorKey: 'acres_harvested'
   },
   {
-    header: 'Crop Type',
+    header: 'Crop',
     accessorKey: 'crop_type',
     inputType: 'select',
     options: [
@@ -29,6 +29,10 @@ const fieldColumns = [
         { value: 'wheat', label: 'Wheat' },
         { value: 'barley', label: 'Barley' }
     ]
+  },
+  {
+    header: 'Passes',
+    accessorKey: 'passes'
   },
   {
     header: 'Seed Cost',
@@ -55,7 +59,7 @@ const fieldColumns = [
     accessorKey: 'bushels_harvested'
   },
   {
-    header: 'Break Even Price',
+    header: 'Break Even',
     accessorKey: 'break_even_price',
     inForm: false,
     currency: true

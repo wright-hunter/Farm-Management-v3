@@ -114,7 +114,7 @@ const Table = ({
             ))}
             <th className={styles.actions}>Actions</th>
           </tr>
-        </thead>
+        </thead>  
         <tbody>
           {/* Create rows from data prop */}
           {sortedData.map((item) => (
