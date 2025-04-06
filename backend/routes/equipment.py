@@ -67,7 +67,7 @@ def create_equipment_entry(equipment_id):
     return jsonify({"message": "Equipment entry created successfully"}), 201
 
 @equipment_bp.route('/<int:equipment_id>/<int:entry_id>', methods=['PUT'])
-def edit_equipment_entry(equipment_id):
+def edit_equipment_entry(equipment_id, entry_id):
     data = request.get_json()
     entry = EquipmentEntry.query.get_or_404(entry_id)
     entry.expense_note = data['expense_note']
