@@ -8,20 +8,21 @@ db = SQLAlchemy()
 class Field(db.Model, SerializerMixin):
     id: int = db.Column(db.Integer, primary_key=True)
     name: str = db.Column(db.String(80), nullable=False)
-    location: str = db.Column(db.String(120), nullable=False)
+    location: str = db.Column(db.String(120))
 
 # FieldEntry model
 class FieldEntry(db.Model, SerializerMixin):
     id: int = db.Column(db.Integer, primary_key=True)
     field_id: int = db.Column(db.Integer, db.ForeignKey('field.id', ondelete='CASCADE'), nullable=False)
     year: int = db.Column(db.Integer, nullable=False)
-    passes: int = db.Column(db.Integer, nullable=True)
-    acres_harvested: float = db.Column(db.Float, nullable=False)
-    crop_type: str = db.Column(db.String(80), nullable=False)
+    passes: int = db.Column(db.Integer)
+    acres_harvested: float = db.Column(db.Float)
+    crop_type: str = db.Column(db.String(80))
     seed_cost: float = db.Column(db.Float)
     fertilizer_cost: float = db.Column(db.Float)
     chemical_cost: float = db.Column(db.Float)
     crop_insurance: float = db.Column(db.Float)
+    rent: float = db.Column(db.Float)
     bushels_harvested: float = db.Column(db.Float)
 
 # Equipment model
@@ -45,12 +46,9 @@ class EquipmentEntry(db.Model, SerializerMixin):
 class YearlyExpenses(db.Model, SerializerMixin):
     year: int = db.Column(db.Integer, primary_key=True)
     fuel: float = db.Column(db.Float)
-    labor: float = db.Column(db.Float)
-    insurance_liscensing: float = db.Column(db.Float)
-    property_taxes: float = db.Column(db.Float)
-    interest_payments: float = db.Column(db.Float)
-    principal_payments: float = db.Column(db.Float)
-    
+    land_payments: float = db.Column(db.Float)
+    property_tax: float = db.Column(db.Float)
+    misc: float = db.Column(db.Float)
     
     
     
