@@ -34,7 +34,7 @@ const Table = ({
   sortBy,
   filterProperty = '', // New prop: just specify which property to filter by
   defaultToMaxValue = false, // New prop: when true, default filter to max value
-  setYear
+  setYear = () => {} // New prop: function to set the year in the parent component
 }) => {
   const navigate = useNavigate();
   
