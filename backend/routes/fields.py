@@ -44,7 +44,8 @@ def get_field(field_id):
         
         # Calculate total cost
         total_cost = (entry.seed_cost + entry.chemical_cost + 
-                     entry.fertilizer_cost + entry.crop_insurance)
+                     entry.fertilizer_cost + entry.crop_insurance +
+                     entry.rent)  
         
         # Calculate break-even price (cost per bushel)
         if entry.bushels_harvested > 0:  # Avoid division by zero
@@ -71,6 +72,7 @@ def create_field_entry(field_id):
         fertilizer_cost=data['fertilizer_cost'],
         chemical_cost=data['chemical_cost'],
         crop_insurance=data['crop_insurance'],
+        rent=data['rent'],
         bushels_harvested=data['bushels_harvested']
     )
     db.session.add(new_entry)
@@ -89,6 +91,7 @@ def update_field_entry(field_id, entry_id):
     entry.fertilizer_cost = data['fertilizer_cost']
     entry.chemical_cost = data['chemical_cost']
     entry.crop_insurance = data['crop_insurance']
+    entry.rent = data['rent']
     entry.bushels_harvested = data['bushels_harvested']
     db.session.commit()
     return jsonify({"message": "Field entry updated successfully"}), 200
