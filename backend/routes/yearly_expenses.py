@@ -76,6 +76,7 @@ def get_yearly_expenses():
                 FieldEntry.year == expense.year,
                 FieldEntry.crop_type == crop_type
             ).scalar() or 0
+            
             # Prepare list of field attributes for batch processing
             field_attributes = [
                 'seed_cost',
@@ -87,32 +88,23 @@ def get_yearly_expenses():
                 'acres_harvested'
             ]
             
-            # Initialize variables to store query results
-            seed_cost = 0
-            fertilizer_cost = 0
-            chemical_cost = 0
-            crop_insurance = 0
-            rent = 0
-            bushels_harvested = 0
-            acres_harvested = 0
+            # Create a dictionary to store query results
+            field_data = {}
             
-            # Run all queries in a loop
+            # Run all queries in a loop and store results in the dictionary
             for attr in field_attributes:
-                result = db.session.query(
+                field_data[attr] = db.session.query(
                     func.sum(getattr(FieldEntry, attr))
                 ).filter(
                     FieldEntry.year == expense.year,
                     FieldEntry.crop_type == crop_type
                 ).scalar() or 0
-                
-                # Assign result to the variable with the same name
-                locals()[attr] = result
 
             # Calculate proportional share of general expenses based on acreage
             # Avoid division by zero
             if total_acres_harvested > 0:
                 # Calculate proportion of general expenses to allocate to this crop
-                acreage_proportion = acres_harvested / total_acres_harvested
+                acreage_proportion = field_data['acres_harvested'] / total_acres_harvested
                 
                 # Allocate general expenses to this crop proportionally
                 allocated_general_expenses = acreage_proportion * total_expenses
@@ -123,21 +115,21 @@ def get_yearly_expenses():
             crop_total_expenses = crop_field_expenses + allocated_general_expenses
             
             # Calculate break-even price for this crop
-            if bushels_harvested > 0:
-                crop_break_even = round(crop_total_expenses / bushels_harvested, 2)
+            if field_data['bushels_harvested'] > 0:
+                crop_break_even = round(crop_total_expenses / field_data['bushels_harvested'], 2)
             else:
                 crop_break_even = 0
             
             # Store all the crop-specific data
             crop_specific_data[crop_type] = {
-                "acres_harvested": acres_harvested,
-                "bushels_harvested": bushels_harvested,
+                "acres_harvested": field_data['acres_harvested'],
+                "bushels_harvested": field_data['bushels_harvested'],
                 "expenses": {
-                    "seed_cost": seed_cost,
-                    "fertilizer_cost": fertilizer_cost,
-                    "chemical_cost": chemical_cost,
-                    "crop_insurance": crop_insurance,
-                    "rent": rent,
+                    "seed_cost": field_data['seed_cost'],
+                    "fertilizer_cost": field_data['fertilizer_cost'],
+                    "chemical_cost": field_data['chemical_cost'],
+                    "crop_insurance": field_data['crop_insurance'],
+                    "rent": field_data['rent'],
                     "direct_expenses_total": crop_field_expenses,
                     "allocated_general_expenses": allocated_general_expenses,
                     "total_expenses": crop_total_expenses
