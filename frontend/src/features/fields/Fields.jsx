@@ -77,7 +77,7 @@ const Fields = ({ api }) => {
         <h1>Fields</h1>
         {/* Render loading/error states or the table */}
         {isLoading ? (
-          <p>Loading field data...</p>
+          <p>Loading data...</p>
         ) : error ? (
           <p style={{ color: 'red' }}>{error}</p>
         ) : (
@@ -90,6 +90,7 @@ const Fields = ({ api }) => {
             sortBy='name'
             clickableRows={true}
             onSuccess={() => setSuccess(!success)}
+            filterProperty='location'
           />
         )}
       </div>

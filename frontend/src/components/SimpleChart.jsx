@@ -29,10 +29,23 @@ const SimpleChart = ({ data, dataKey, xAxisKey, title }) => {
             data={chartData}
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis dataKey={xAxisKey} />
-            <YAxis />
-            <Tooltip />
+            <YAxis 
+              tickFormatter={(value) => `$${value.toLocaleString(undefined, {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+              })}`}
+            />
+            <Tooltip 
+              formatter={(value) => [
+                `$${value.toLocaleString(undefined, {
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 0
+                })}`, 
+                'Amount'
+              ]}
+            />
             <Legend />
             <Line 
               type="monotone" 

@@ -6,7 +6,7 @@ const Sidebar = () => {
   return (
     <div className={styles.sidebar}>
       <div className={styles.logo}>
-        <h1>My App</h1>
+        <h1>AgWright</h1>
       </div>
       <nav>
         <ul>

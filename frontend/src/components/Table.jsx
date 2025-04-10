@@ -189,7 +189,7 @@ const Table = ({
             {columns.map((column) => (
               <th className={styles.contentColumn} key={column.accessorKey || column.header}>{column.header}</th>
             ))}
-            <th className={styles.actions}>Actions</th>
+            <th>Actions</th>
           </tr>
         </thead>  
         <tbody>

@@ -23,11 +23,11 @@ const fieldColumns = [
     accessorKey: 'crop_type',
     inputType: 'select',
     options: [
-        { value: 'corn', label: 'Corn' },
-        { value: 'soybeans', label: 'Soybeans' },
-        { value: 'oats', label: 'Oats' },
-        { value: 'wheat', label: 'Wheat' },
-        { value: 'barley', label: 'Barley' }
+        { value: 'Corn', label: 'Corn' },
+        { value: 'Soybeans', label: 'Soybeans' },
+        { value: 'Oats', label: 'Oats' },
+        { value: 'Wheat', label: 'Wheat' },
+        { value: 'Barley', label: 'Barley' }
     ]
   },
   {
@@ -52,6 +52,11 @@ const fieldColumns = [
   {
     header: 'Crop Insurance',
     accessorKey: 'crop_insurance',
+    currency: true
+  },
+  {
+    header: 'Rent',
+    accessorKey: 'rent',
     currency: true
   },
   {
