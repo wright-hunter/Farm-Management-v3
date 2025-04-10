@@ -140,7 +140,7 @@ const Dashboard = ({ api }) => {
           />
         )}
       </div>
-      <div className={styles.leftColumn}>
+      <div className={styles.plot}>
         <SimpleChart 
           data={fieldData} 
           dataKey='total_expenses' 
@@ -148,7 +148,7 @@ const Dashboard = ({ api }) => {
           title='Total Expenses ($)' 
         />
       </div>
-      <div className={styles.rightColumn}>
+      <div className={styles.plot}>
         <BarPlot
           selectors={selectors}
           data={yearData || []}

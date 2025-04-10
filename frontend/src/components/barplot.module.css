@@ -24,7 +24,7 @@
 /* Chart Container Styles */
 .plotContainer {
     width: 95%;
-    height: 400px;
+    height: 90%;
     background-color: var(--tertiary-color);
     padding: 10px;
     border-radius: 10px;
