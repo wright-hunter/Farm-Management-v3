@@ -1,3 +1,6 @@
+#vscode and devcontainer
+.devcontainer/
+.vscode/
 #backend
 venv/
 migrations/
